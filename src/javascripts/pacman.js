@@ -84,22 +84,39 @@ class Pacman {
     }
 
     checkGhostCollision() {
-
+        for(let i = 0; i < ghosts.length; i++) {
+            let ghost = ghosts[i]
+            if (
+                ghost.getMapX() == this.getMapX() && 
+                ghost.getMapY() == this.getMapY()
+            ) {
+                return true;
+            }
+        }
+        return false;
     }
 
     changeDirectionIfPossible() {
-        if (this.direction == this.nextDirection) return
-
+        if (this.direction == this.nextDirection) return;
+    
+        if (
+            parseInt(this.x) % oneBlockSize !== 0 ||
+            parseInt(this.y) % oneBlockSize !== 0
+        ) {
+            return;
+        }
+    
         let tempDirection = this.direction;
         this.direction = this.nextDirection;
         this.moveForwards();
         if (this.checkCollision()) {
-            this.moveBackwards;
+            this.moveBackwards(); 
             this.direction = tempDirection;
         } else {
-            this.moveBackwards();
+            this.moveBackwards(); 
         }
     }
+    
 
     changeAnimation() {
         this.currentFrame = this.currentFrame == this.frameCount ? 1: this.currentFrame + 1;
