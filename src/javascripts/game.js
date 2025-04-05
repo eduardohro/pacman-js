@@ -98,6 +98,7 @@ let restartGame = () => {
 
 let gameOver = () => {
     clearInterval(gameInterval);
+    
 } 
 
 let drawLives = () => {
@@ -105,9 +106,20 @@ let drawLives = () => {
     canvasContext.fillStyle = "White";
     canvasContext.fillText(
         "Vidas: " + lives, 
-        200, 
+        220, 
         oneBlockSize * (map.length + 1) + 10
     );
+    for (let i = 0; i < lives; i++) {
+        canvasContext.drawImage(
+            pacmanFrames,
+            2 * oneBlockSize,
+            0,
+            oneBlockSize, oneBlockSize, 300 + i * oneBlockSize,
+            oneBlockSize * map.length + 12,
+            oneBlockSize,
+            oneBlockSize
+        )
+    }
 }
 
 let drawFoods = () => {
@@ -131,7 +143,7 @@ let drawScore = () => {
     canvasContext.fillStyle = "white";
     canvasContext.fillText(
         "Pontuação: " + score,
-        0,
+        10,
         oneBlockSize * (map.length + 1) + 10
     )
 };
