@@ -69,8 +69,8 @@ let randomTargetsForGhosts = [
 ];
 
 let gameLoop = () => {
-    update();
     draw();
+    update();
 };
 
 let update = () => {
@@ -97,16 +97,22 @@ let restartGame = () => {
 };
 
 let gameOver = () => {
+    drawGameOver();
     clearInterval(gameInterval);
-    
 } 
+
+let drawGameOver = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "White";
+    canvasContext.fillText("Fim de Jogo!", 100, 200);
+}
 
 let drawLives = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "White";
     canvasContext.fillText(
-        "Vidas: " + lives, 
-        220, 
+        "Vidas: ",
+        280, 
         oneBlockSize * (map.length + 1) + 10
     );
     for (let i = 0; i < lives; i++) {
@@ -114,7 +120,7 @@ let drawLives = () => {
             pacmanFrames,
             2 * oneBlockSize,
             0,
-            oneBlockSize, oneBlockSize, 300 + i * oneBlockSize,
+            oneBlockSize, oneBlockSize, 410 + i * oneBlockSize,
             oneBlockSize * map.length + 12,
             oneBlockSize,
             oneBlockSize
@@ -142,7 +148,7 @@ let drawScore = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "white";
     canvasContext.fillText(
-        "Pontuação: " + score,
+        "Pontuacao: " + score,
         10,
         oneBlockSize * (map.length + 1) + 10
     )
