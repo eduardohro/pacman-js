@@ -19,6 +19,7 @@ let score = 0;
 let ghosts = [];
 let ghostCount = 4;
 let lives = 3;
+let foodCount = 0;
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -58,6 +59,14 @@ let map = [
     [1,1,1,1,1 ,1,1,1,1,1 , 1,1,1,1,1, 1,1,1,1,1, 1],
 ];
 
+for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[0].length; j++) {
+        if (map[i][j] == 2) {
+            foodCount++;
+        }
+    }
+}
+
 let randomTargetsForGhosts = [
     {x: 1 * oneBlockSize, y: 1 * oneBlockSize},
     {x: 1 * oneBlockSize, y: (map.length - 2) * oneBlockSize},
@@ -81,9 +90,14 @@ let update = () => {
         ghosts[i].moveProcess();
     };
 
-    if(pacman.checkGhostCollision()) {
+    if (pacman.checkGhostCollision()) {
         console.log("hit");
         restartGame();
+    }
+
+    if (score >= foodCount) {
+        drawWin();
+        clearInterval(gameInterval);
     }
 };
 
@@ -104,7 +118,14 @@ let gameOver = () => {
 let drawGameOver = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "White";
-    canvasContext.fillText("Fim de Jogo!", 100, 200);
+    canvasContext.fillText("Fim de Jogo!", 90, 200);
+}
+
+let drawWin = () => {
+    canvasContext.font = "20px Emulogic";
+    canvasContext.fillStyle = "White";
+    canvasContext.fillText("Deu um pac no sistema", 0, 200);
+    canvasContext.fillText("e ganhou!", 120, 230);
 }
 
 let drawLives = () => {
@@ -112,7 +133,7 @@ let drawLives = () => {
     canvasContext.fillStyle = "White";
     canvasContext.fillText(
         "Vidas: ",
-        280, 
+        300, 
         oneBlockSize * (map.length + 1) + 10
     );
     for (let i = 0; i < lives; i++) {
@@ -120,13 +141,13 @@ let drawLives = () => {
             pacmanFrames,
             2 * oneBlockSize,
             0,
-            oneBlockSize, oneBlockSize, 410 + i * oneBlockSize,
+            oneBlockSize, oneBlockSize, 420 + i * oneBlockSize,
             oneBlockSize * map.length + 12,
             oneBlockSize,
             oneBlockSize
-        )
+        );
     }
-}
+};
 
 let drawFoods = () => {
     for (let i = 0; i < map.length; i++) {
@@ -149,7 +170,7 @@ let drawScore = () => {
     canvasContext.fillStyle = "white";
     canvasContext.fillText(
         "Pontuacao: " + score,
-        10,
+        0,
         oneBlockSize * (map.length + 1) + 10
     )
 };
