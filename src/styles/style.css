@@ -40,3 +40,60 @@ canvas {
 .hidden-assets {
     display: none;
 }
+
+#arcade-controls {
+    display: flex;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+.horizontal-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.arcade-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff0, #cc0);
+    box-shadow: 0 4px 0 #999;
+    color: #000;
+    text-shadow: 1px 1px 0 #fff;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.arcade-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 #999;
+}
+
+.arcade-btn.up {
+    background: radial-gradient(circle at 30% 30%, #0ff, #08a);
+}
+.arcade-btn.down {
+    background: radial-gradient(circle at 30% 30%, #f0f, #c0c);
+}
+.arcade-btn.left {
+    background: radial-gradient(circle at 30% 30%, #0f0, #080);
+}
+.arcade-btn.right {
+    background: radial-gradient(circle at 30% 30%, #f00, #800);
+}
+
+@media (min-width: 1025px) {
+    #arcade-controls {
+        display: none;
+    }
+}

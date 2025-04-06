@@ -16,6 +16,15 @@
     <img id="ghosts" src="src/assets/ghost.png" alt="" />
   </div>
 
+  <div id="arcade-controls">
+    <button onclick="movePacman('up')" class="arcade-btn up">▲</button>
+    <div class="horizontal-controls">
+        <button onclick="movePacman('left')" class="arcade-btn left">◀</button>
+        <button onclick="movePacman('down')" class="arcade-btn down">▼</button>
+        <button onclick="movePacman('right')" class="arcade-btn right">▶</button>
+    </div>
+  </div>  
+
   <script src="src/javascripts/ghost.js"></script>
   <script src="src/javascripts/pacman.js"></script>
   <script src="src/javascripts/game.js"></script>

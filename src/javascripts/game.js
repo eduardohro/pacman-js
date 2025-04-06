@@ -268,3 +268,22 @@ window.addEventListener("keydown", (event) => {
         }
     }, 1);
 });
+
+function movePacman(direction) {
+    switch (direction) {
+        case 'up':
+            pacman.nextDirection = DIRECTION_UP;
+            break;
+        case 'down':
+            pacman.nextDirection = DIRECTION_BOTTOM;
+            break;
+        case 'left':
+            pacman.nextDirection = DIRECTION_LEFT;
+            break;
+        case 'right':
+            pacman.nextDirection = DIRECTION_RIGHT;
+            break;
+        default:
+            console.warn("Direção inválida:", direction);
+    }
+}
