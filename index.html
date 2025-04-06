@@ -1,34 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pacman</title>
-    <style>
-        @font-face {
-            font-family: 'Emulogic';
-            src: url('src/font/Emulogic.ttf.eot'); /* IE9 compat mode */
-            src: url('src/font/Emulogic.ttf.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-                url('src/font/Emulogic.ttf.woff') format('woff'), /* Modern browsers */
-                url('src/font/Emulogic.ttf') format('truetype'); /* Safari, Android, iOS */
-            font-weight: normal;
-            font-style: normal;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacman</title>
+  <style>
+    @font-face {
+      font-family: 'Emulogic';
+      src: url('src/font/Emulogic.ttf.eot'); /* IE9 compat mode */
+      src: url('src/font/Emulogic.ttf.eot?#iefix') format('embedded-opentype'),
+           url('src/font/Emulogic.ttf.woff') format('woff'),
+           url('src/font/Emulogic.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-        /* body, html {
-            font-family: 'Emulogic', monospace;
-            color: antiquewhite;
-        } */
-    </style>      
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      font-family: 'Emulogic', sans-serif;
+      overflow: hidden;
+    }
+
+    .game-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* canvas {
+      border: 2px solid yellow;
+    } */
+
+    /* #score {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-align: center;
+    } */
+
+    /* Esconde as imagens usadas como sprites */
+    .hidden-assets {
+      display: none;
+    }
+  </style>
 </head>
-<body style="margin: 0px; background-color: black; overflow-y: hidden; overflow-x: hidden;">
+<body>
+  <div class="game-container">
+    <!-- <div id="score">SCORE: 0</div> -->
     <canvas id="canvas" width="500" height="500"></canvas>
-    <div style="display: none">
-        <img id="animations" src="src/assets/animations.gif" alt="">
-        <img id="ghosts" src="src/assets/ghost.png" alt="">
-    </div>
+  </div>
+
+  <div class="hidden-assets">
+    <img id="animations" src="src/assets/animations.gif" alt="" />
+    <img id="ghosts" src="src/assets/ghost.png" alt="" />
+  </div>
+
+  <script src="src/javascripts/ghost.js"></script>
+  <script src="src/javascripts/pacman.js"></script>
+  <script src="src/javascripts/game.js"></script>
 </body>
-<script src="src/javascripts/ghost.js"></script>
-<script src="src/javascripts/pacman.js"></script>
-<script src="src/javascripts/game.js"></script>
 </html>

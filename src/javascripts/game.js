@@ -118,22 +118,22 @@ let gameOver = () => {
 let drawGameOver = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "White";
-    canvasContext.fillText("Fim de Jogo!", 90, 200);
+    canvasContext.fillText("Fim de Jogo!", 90, 20);
 }
 
 let drawWin = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "White";
-    canvasContext.fillText("Deu um pac no sistema", 0, 200);
-    canvasContext.fillText("e ganhou!", 120, 230);
+    canvasContext.fillText("Deu um pac no sistema", 0, 20);
+    canvasContext.fillText("e ganhou!", 120, 45);
 }
 
 let drawLives = () => {
-    canvasContext.font = "20px Emulogic";
+    canvasContext.font = "15px Emulogic";
     canvasContext.fillStyle = "White";
     canvasContext.fillText(
         "Vidas: ",
-        300, 
+        240, 
         oneBlockSize * (map.length + 1) + 10
     );
     for (let i = 0; i < lives; i++) {
@@ -141,7 +141,7 @@ let drawLives = () => {
             pacmanFrames,
             2 * oneBlockSize,
             0,
-            oneBlockSize, oneBlockSize, 420 + i * oneBlockSize,
+            oneBlockSize, oneBlockSize, 340 + i * oneBlockSize,
             oneBlockSize * map.length + 12,
             oneBlockSize,
             oneBlockSize
@@ -166,7 +166,7 @@ let drawFoods = () => {
 };
 
 let drawScore = () => {
-    canvasContext.font = "20px Emulogic";
+    canvasContext.font = "15px Emulogic";
     canvasContext.fillStyle = "white";
     canvasContext.fillText(
         "Pontuacao: " + score,
