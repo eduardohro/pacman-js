@@ -113,6 +113,7 @@ let restartGame = () => {
 let gameOver = () => {
     drawGameOver();
     clearInterval(gameInterval);
+    showRestartButton();
 } 
 
 let drawGameOver = () => {
@@ -126,6 +127,7 @@ let drawWin = () => {
     canvasContext.fillStyle = "White";
     canvasContext.fillText("Deu um pac no sistema", 0, 20);
     canvasContext.fillText("e ganhou!", 120, 45);
+    showRestartButton();
 }
 
 let drawLives = () => {
@@ -287,3 +289,12 @@ function movePacman(direction) {
             console.warn("Direção inválida:", direction);
     }
 }
+
+function showRestartButton() {
+    document.getElementById('restart-container').style.display = 'block';
+  }
+  
+  document.getElementById('restart-btn').addEventListener('click', () => {
+    location.reload(); // reinicia a página e o jogo do zero
+  });
+  
