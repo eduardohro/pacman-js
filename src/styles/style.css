@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Emulogic';
+    src: url('../font/Emulogic.ttf') format('truetype'),
+         url('../font/Emulogic.ttf.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    font-family: 'Emulogic', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+canvas {
+    width: 90vw; 
+    aspect-ratio: 1 / 1; 
+    max-width: 500px;
+    height: auto;
+  }
+
+.hidden-assets {
+    display: none;
+}

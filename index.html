@@ -3,62 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/styles/style.css">
   <title>Pacman</title>
-  <style>
-    @font-face {
-      font-family: 'Emulogic';
-      src: url('src/font/Emulogic.ttf.eot'); /* IE9 compat mode */
-      src: url('src/font/Emulogic.ttf.eot?#iefix') format('embedded-opentype'),
-           url('src/font/Emulogic.ttf.woff') format('woff'),
-           url('src/font/Emulogic.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    * {
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-    }
-
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: black;
-      font-family: 'Emulogic', sans-serif;
-      overflow: hidden;
-    }
-
-    .game-container {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* canvas {
-      border: 2px solid yellow;
-    } */
-
-    /* #score {
-      color: white;
-      font-size: 20px;
-      margin-bottom: 10px;
-      text-align: center;
-    } */
-
-    /* Esconde as imagens usadas como sprites */
-    .hidden-assets {
-      display: none;
-    }
-  </style>
 </head>
 <body>
   <div class="game-container">
-    <!-- <div id="score">SCORE: 0</div> -->
-    <canvas id="canvas" width="500" height="500"></canvas>
+    <canvas id="canvas" width="420" height="500"></canvas>
   </div>
 
   <div class="hidden-assets">
