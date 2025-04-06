@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height: 100vh;
 }
 
 canvas {
@@ -35,7 +35,7 @@ canvas {
     aspect-ratio: 1 / 1; 
     max-width: 500px;
     height: auto;
-  }
+}
 
 .hidden-assets {
     display: none;
@@ -44,7 +44,7 @@ canvas {
 #arcade-controls {
     display: flex;
     position: fixed;
-    bottom: 30px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
@@ -55,7 +55,7 @@ canvas {
   
 .horizontal-controls {
     display: flex;
-    gap: 10px;
+    gap: 30px;
     justify-content: center;
 }
 
@@ -98,6 +98,12 @@ canvas {
     }
 }
 
+@media (max-width: 768px) {
+    canvas {
+        margin-bottom: 150px;
+    }
+}
+
 #restart-container {
     position: fixed;
     top: 50%;
@@ -108,9 +114,9 @@ canvas {
     padding: 20px;
     border-radius: 20px;
     text-align: center;
-  }
+}
   
-  .arcade-btn.restart {
+.arcade-btn.restart {
     width: 80px;
     height: 80px;
     font-size: 32px;
@@ -123,15 +129,15 @@ canvas {
     text-shadow: 1px 1px 0 #fff;
     cursor: pointer;
     transition: transform 0.1s ease;
-  }
+}
 
-  .arcade-btn.restart img {
+.arcade-btn.restart img {
     width: 60px;
     margin-top: 5px;
-  }
+}
   
-  .arcade-btn.restart:active {
+.arcade-btn.restart:active {
     transform: translateY(4px);
     box-shadow: 0 0px 0 #999;
-  }
+}
   
