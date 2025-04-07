@@ -27,14 +27,19 @@ class Pacman {
     eat() {
         const pacX = this.getMapX();
         const pacY = this.getMapY();
+        const now = Date.now();
     
         if (map[pacY][pacX] === 2) {
             map[pacY][pacX] = 3;
             score++;
-            chompSound.currentTime = 0;
-            chompSound.play();
-        } 
-    }
+    
+            if (now - this.lastChompTime >= 1000) { 
+                chompSound.currentTime = 0;
+                chompSound.play();
+                this.lastChompTime = now;
+            }
+        }
+    }    
     
     moveBackwards() {
         switch(this.direction) {

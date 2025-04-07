@@ -85,7 +85,6 @@ function startCountdown() {
     }, 1000);
 }
 
-
 let ghostLocations = [
     {x: 0, y: 0},
     {x: 176, y: 0},
