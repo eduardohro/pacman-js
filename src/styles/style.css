@@ -13,16 +13,61 @@
     margin: 0;
 }
 
-body {
-    height: 100vh;
-    background-color: black;
-    font-family: 'Emulogic', sans-serif;
+body, html {
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    font-family: 'Emulogic', sans-serif;
+    background: black;
+    color: yellow;
+}
+  
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+  
+.screen-wrapper {
+    display: flex;
+    width: 200vw;
+    height: 100vh;
+    transition: transform 0.8s ease-in-out;
+}
+  
+.screen-wrapper.show-game {
+    transform: translateX(-100vw);
+}
+  
+.home-screen, .game-screen {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+  
+.intro {
+    text-align: center;
+}
+  
+.start-btn {
+    background-color: yellow;
+    color: black;
+    font-size: 18px;
+    padding: 15px 25px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 20px yellow;
+    font-family: 'Press Start 2P', cursive;
+}
+  
+.game-container {
+    position: relative;
+}
+  
 .game-container {
     display: flex;
     justify-content: center;

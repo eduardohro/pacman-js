@@ -26,6 +26,13 @@ const DIRECTION_UP = 3;
 const DIRECTION_LEFT = 2;
 const DIRECTION_BOTTOM = 1;
 
+const startBtn = document.querySelector('.start-btn');
+    const screenWrapper = document.querySelector('.screen-wrapper');
+
+    startBtn.addEventListener('click', () => {
+      screenWrapper.classList.add('show-game');
+});
+
 let ghostLocations = [
     {x: 0, y: 0},
     {x: 176, y: 0},

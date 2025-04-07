@@ -4,33 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="src/styles/style.css">
+  <link rel="stylesheet" href="src/assets/favicon.ico">
   <title>Pacman</title>
 </head>
 <body>
-  <div class="game-container">
-    <canvas id="canvas" width="420" height="500"></canvas>
-  </div>
+  <main class="main-container">
+    <div class="screen-wrapper">
 
-  <div class="hidden-assets">
-    <img id="animations" src="src/assets/animations.gif" alt="" />
-    <img id="ghosts" src="src/assets/ghost.png" alt="" />
-  </div>
+      <!-- Tela inicial -->
+      <section class="home-screen">
+        <div class="intro">
+          <h1>PACMAN</h1>
+          <p>PREPARADO PARA O DESAFIO?</p>
+          <button class="start-btn">Iniciar</button>
+        </div>
+      </section>
 
-  <div id="arcade-controls">
-    <button onclick="movePacman('up')" class="arcade-btn up">▲</button>
-    <div class="horizontal-controls">
-        <button onclick="movePacman('left')" class="arcade-btn left">◀</button>
-        <button onclick="movePacman('down')" class="arcade-btn down">▼</button>
-        <button onclick="movePacman('right')" class="arcade-btn right">▶</button>
+      <!-- Tela do jogo -->
+      <section class="game-screen">
+        <div class="game-container">
+          <canvas id="canvas" width="420" height="500"></canvas>
+
+          <div class="hidden-assets">
+            <img id="animations" src="src/assets/animations.gif" alt="" />
+            <img id="ghosts" src="src/assets/ghost.png" alt="" />
+          </div>
+
+          <div id="arcade-controls">
+            <button onclick="movePacman('up')" class="arcade-btn up">▲</button>
+            <div class="horizontal-controls">
+              <button onclick="movePacman('left')" class="arcade-btn left">◀</button>
+              <button onclick="movePacman('down')" class="arcade-btn down">▼</button>
+              <button onclick="movePacman('right')" class="arcade-btn right">▶</button>
+            </div>
+          </div>
+
+          <div id="restart-container" style="display: none;">
+            <button id="restart-btn" class="arcade-btn restart">
+              <img src="src/assets/restart-button.png" alt="">
+            </button>
+          </div>
+        </div>
+      </section>
+
     </div>
-  </div>  
+  </main>
 
-  <div id="restart-container" style="display: none;">
-    <button id="restart-btn" class="arcade-btn restart"><img src="src/assets/restart-button.png" alt=""></button>
-  </div>
-  
   <script src="src/javascripts/ghost.js"></script>
   <script src="src/javascripts/pacman.js"></script>
   <script src="src/javascripts/game.js"></script>
 </body>
+
 </html>
