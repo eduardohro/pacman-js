@@ -90,7 +90,7 @@ canvas {
     display: flex;
     position: fixed;
     bottom: 25px;
-    left: 50%;
+    left: 75%;
     transform: translateX(-50%);
     z-index: 1000;
     align-items: center;
@@ -152,7 +152,7 @@ canvas {
 #restart-container {
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
     z-index: 2000;
     background: rgba(0, 0, 0, 0.7);
@@ -186,3 +186,8 @@ canvas {
     box-shadow: 0 0px 0 #999;
 }
   
+.screen-wrapper:not(.show-game) .arcade-btn,
+.screen-wrapper:not(.show-game) #arcade-controls,
+.screen-wrapper:not(.show-game) #restart-container {
+  display: none;
+}
