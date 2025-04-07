@@ -21,22 +21,21 @@ class Pacman {
         if (this.checkCollision()) {
             this.moveBackwards();
         }
+        this.eat();
     }
 
     eat() {
-        for (let i = 0; i < map.length; i++) {
-            for (let j = 0; j < map[0].length; j++) {
-                if (map[i][j] == 2 && 
-                    this.getMapX() == j && 
-                    this.getMapY() == i 
-                ) {
-                    map[i][j] = 3;
-                    score++;
-                }
-            }
-        }
+        const pacX = this.getMapX();
+        const pacY = this.getMapY();
+    
+        if (map[pacY][pacX] === 2) {
+            map[pacY][pacX] = 3;
+            score++;
+            chompSound.currentTime = 0;
+            chompSound.play();
+        } 
     }
-
+    
     moveBackwards() {
         switch(this.direction) {
             case DIRECTION_RIGHT:

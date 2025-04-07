@@ -2,6 +2,7 @@ const canvas = document.getElementById("canvas");
 const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animations");
 const ghostFrames = document.getElementById("ghosts");
+const chompSound = new Audio("src/sounds/chomp.mp3");
 
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
@@ -23,6 +24,7 @@ let foodCount = 0;
 let gameStarted = false;
 let gameInterval;
 
+let startSound;
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -36,6 +38,19 @@ const startBtn = document.querySelector('.start-btn');
         screenWrapper.classList.add('show-game');
         startCountdown();
 });
+
+window.onload = () => {
+    startSound = new Audio("src/sounds/start.wav");
+    startSound.loop = true; 
+    startSound.play();
+
+    startBtn.style.display = "inline-block"; 
+};
+
+if (startSound) {
+    startSound.pause();
+    startSound.currentTime = 0;
+}
 
 function startCountdown() {
     const countdownEl = document.createElement("div");
@@ -57,10 +72,14 @@ function startCountdown() {
         if (count > 0) {
             countdownEl.innerText = count;
         } else if (count === 0) {
-            countdownEl.innerText = "Vai!";
+            countdownEl.innerText = "GO!";
         } else {
             clearInterval(countdownInterval);
             document.body.removeChild(countdownEl);
+            if (startSound) {
+                startSound.pause();
+                startSound.currentTime = 0;
+            }
             startGame();
         }
     }, 1000);
@@ -160,7 +179,7 @@ let gameOver = () => {
 let drawGameOver = () => {
     canvasContext.font = "20px Emulogic";
     canvasContext.fillStyle = "White";
-    canvasContext.fillText("Fim de Jogo!", 90, 20);
+    canvasContext.fillText("Pac-Man foi de base!", 17, 20);
 }
 
 let drawWin = () => {
