@@ -20,6 +20,9 @@ let ghosts = [];
 let ghostCount = 4;
 let lives = 3;
 let foodCount = 0;
+let gameStarted = false;
+let gameInterval;
+
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -30,8 +33,39 @@ const startBtn = document.querySelector('.start-btn');
     const screenWrapper = document.querySelector('.screen-wrapper');
 
     startBtn.addEventListener('click', () => {
-      screenWrapper.classList.add('show-game');
+        screenWrapper.classList.add('show-game');
+        startCountdown();
 });
+
+function startCountdown() {
+    const countdownEl = document.createElement("div");
+    countdownEl.id = "countdown";
+    countdownEl.style.position = "absolute";
+    countdownEl.style.top = "50%";
+    countdownEl.style.left = "50%";
+    countdownEl.style.transform = "translate(-50%, -50%)";
+    countdownEl.style.font = "40px Emulogic";
+    countdownEl.style.color = "white";
+    countdownEl.style.zIndex = "1000";
+    document.body.appendChild(countdownEl);
+
+    let count = 3;
+    countdownEl.innerText = count;
+
+    const countdownInterval = setInterval(() => {
+        count--;
+        if (count > 0) {
+            countdownEl.innerText = count;
+        } else if (count === 0) {
+            countdownEl.innerText = "Vai!";
+        } else {
+            clearInterval(countdownInterval);
+            document.body.removeChild(countdownEl);
+            startGame();
+        }
+    }, 1000);
+}
+
 
 let ghostLocations = [
     {x: 0, y: 0},
@@ -201,8 +235,6 @@ let draw = () => {
     drawLives();
 };
 
-let gameInterval = setInterval(gameLoop, 1000/fps);
-
 let drawWalls = () => {
     for(let i = 0; i < map.length; i++) {
         for(let j = 0; j < map[0].length; j++) {
@@ -258,10 +290,6 @@ let createGhosts = () => {
     }
 };
 
-createNewPacman();
-createGhosts();
-gameLoop();
-
 window.addEventListener("keydown", (event) => {
     let k = event.keyCode
 
@@ -299,9 +327,15 @@ function movePacman(direction) {
 
 function showRestartButton() {
     document.getElementById('restart-container').style.display = 'block';
-  }
+}
   
   document.getElementById('restart-btn').addEventListener('click', () => {
-    location.reload(); // reinicia a página e o jogo do zero
-  });
+    location.reload(); 
+});
   
+function startGame() {
+    createNewPacman();
+    createGhosts();
+    gameStarted = true;
+    gameInterval = setInterval(gameLoop, 1000 / fps);
+}
