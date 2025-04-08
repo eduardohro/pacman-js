@@ -9,6 +9,7 @@ class Pacman {
         this.nextDirection = this.direction;
         this.currentFrame = 1; 
         this.frameCount = 7;
+        this.lastChompTime = 0;
 
         setInterval(() => {
             this.changeAnimation()
@@ -33,9 +34,15 @@ class Pacman {
             map[pacY][pacX] = 3;
             score++;
     
-            if (now - this.lastChompTime >= 1000) { 
+            if (now - this.lastChompTime >= 1000) {
                 chompSound.currentTime = 0;
                 chompSound.play();
+    
+                setTimeout(() => {
+                    chompSound.pause();
+                    chompSound.currentTime = 0;
+                }, 1000);
+    
                 this.lastChompTime = now;
             }
         }
