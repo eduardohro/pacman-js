@@ -3,6 +3,9 @@ const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animations");
 const ghostFrames = document.getElementById("ghosts");
 const chompSound = new Audio("src/sounds/chomp.mp3");
+const loseLifeSound = new Audio('src/sounds/deathSoundShort.wav');
+const gameOverSound = new Audio('src/sounds/deathSoundLong.wav');
+
 
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
@@ -161,6 +164,15 @@ let update = () => {
 };
 
 let restartGame = () => {
+    if (startSound) {
+        startSound.pause();
+        startSound.currentTime = 0;
+    }
+
+    // 👇 Tocando som de perda de vida
+    loseLifeSound.currentTime = 0;
+    loseLifeSound.play();
+
     createNewPacman(); 
     createGhosts();
     lives--;
@@ -170,6 +182,15 @@ let restartGame = () => {
 };
 
 let gameOver = () => {
+    if (startSound) {
+        startSound.pause();
+        startSound.currentTime = 0;
+    }
+
+    // 👇 Tocando som de game over
+    gameOverSound.currentTime = 0;
+    gameOverSound.play();
+
     drawGameOver();
     clearInterval(gameInterval);
     showRestartButton();
@@ -309,7 +330,7 @@ let createGhosts = () => {
 };
 
 window.addEventListener("keydown", (event) => {
-    let k = event.keyCode
+    let k = event.keyCode;
 
     setTimeout(() => {
         if(k == 37 || k == 65) { // left
@@ -354,6 +375,6 @@ function showRestartButton() {
 function startGame() {
     createNewPacman();
     createGhosts();
-    gameStarted = true;
     gameInterval = setInterval(gameLoop, 1000 / fps);
+    gameStarted = true;
 }
