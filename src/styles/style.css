@@ -50,6 +50,11 @@ body, html {
 .intro {
     text-align: center;
 }
+
+.intro img {
+    padding:5px;
+    width:30px;
+}
   
 .start-btn {
     background-color: yellow;
