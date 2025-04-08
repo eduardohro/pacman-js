@@ -169,7 +169,6 @@ let restartGame = () => {
         startSound.currentTime = 0;
     }
 
-    // 👇 Tocando som de perda de vida
     loseLifeSound.currentTime = 0;
     loseLifeSound.play();
 
@@ -187,7 +186,6 @@ let gameOver = () => {
         startSound.currentTime = 0;
     }
 
-    // 👇 Tocando som de game over
     gameOverSound.currentTime = 0;
     gameOverSound.play();
 
